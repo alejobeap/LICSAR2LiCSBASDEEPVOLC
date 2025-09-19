@@ -18,9 +18,11 @@ for i in range(len(df)-1):
     if df.loc[i, 'end'] < df.loc[i+1, 'start'] - pd.Timedelta(days=1):
         islas.append((df.loc[i, 'end'], df.loc[i+1, 'start']))
 
-# Guardar fechas de gaps en archivo
+# Guardar fechas de gaps en archivo, ajustando un mes antes y un mes después
 with open('gaps_dates.txt', 'w') as f:
     for gap_start, gap_end in islas:
-        f.write(f"{gap_start.strftime('%Y-%m-%d')} {gap_end.strftime('%Y-%m-%d')}\n")
+        gap_start_adj = gap_start - pd.DateOffset(months=1)
+        gap_end_adj = gap_end + pd.DateOffset(months=1)
+        f.write(f"{gap_start_adj.strftime('%Y-%m-%d')} {gap_end_adj.strftime('%Y-%m-%d')}\n")
 
-print("Archivo 'gaps_dates.txt' generado con las fechas de los gaps.")
+print("Archivo 'gaps_dates.txt' generado con las fechas de los gaps ajustadas un mes antes y después.")
