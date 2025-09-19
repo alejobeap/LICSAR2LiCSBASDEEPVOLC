@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+from datetime import datetime
 
 # Carpeta GEOC
 directorio = "GEOC"
@@ -28,6 +29,13 @@ if len(intervalos) > 0:
             gaps.append((gap_start, gap_end))
         # Extender rango_fin al máximo del cluster
         rango_fin = max(rango_fin, fin)
+    
+    # Gap hasta hoy si el último intervalo no llega a la fecha actual
+    today = pd.Timestamp(datetime.today().date())
+    if rango_fin < today:
+        gap_start = rango_fin - pd.DateOffset(months=1)
+        gap_end = today + pd.DateOffset(months=1)
+        gaps.append((gap_start, gap_end))
 
 # Guardar gaps en archivo
 with open('gaps_dates.txt', 'w') as f:
