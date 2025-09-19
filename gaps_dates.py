@@ -30,9 +30,9 @@ if len(intervalos) > 0:
         # Extender rango_fin al máximo del cluster
         rango_fin = max(rango_fin, fin)
     
-    # Gap hasta hoy si el último intervalo no llega a la fecha actual
+    # Gap hasta hoy solo si el último intervalo terminó hace más de 2 semanas
     today = pd.Timestamp(datetime.today().date())
-    if rango_fin < today:
+    if rango_fin < today - pd.Timedelta(weeks=2):
         gap_start = rango_fin - pd.DateOffset(months=1)
         gap_end = today + pd.DateOffset(months=1)
         gaps.append((gap_start, gap_end))
