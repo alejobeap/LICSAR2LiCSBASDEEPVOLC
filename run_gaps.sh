@@ -14,7 +14,7 @@ if [[ -s "$archivo" ]]; then
     # Leer línea por línea
     while read -r start end; do
         # Ejecutar el comando para cada línea
-        licsar_make_frame.sh -P -f current_dir="$current_dir" 1 1 "$start" "$end"
+        licsar_make_frame.sh -P -f "$current_dir" 1 1 "$start" "$end"
     done < "$archivo"
 else
     echo "No hay gaps en el archivo $archivo. No se ejecutará nada."
