@@ -2,6 +2,7 @@ import sys
 import re
 import pandas as pd
 import volcdb
+import os
 
 # If no argument is given, use current directory name
 if len(sys.argv) != 2:
