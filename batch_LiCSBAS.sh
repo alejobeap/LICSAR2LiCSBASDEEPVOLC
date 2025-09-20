@@ -7,8 +7,7 @@ if [ $# == 0 ]; then
     echo "* namevolcano: <Name of the volcano>"
     exit 0
 fi
-
-filevolcano=156D_11424_131313_clips.txt
+filevolcano=$(ls *_clips.txt 2>/dev/null | head -n 1)
 VOLC_NAME=$1
 
 # LiCSBAS steps:
