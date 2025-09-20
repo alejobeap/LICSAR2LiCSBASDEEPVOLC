@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Archivo con la lista de clips
-input_file="156D_11424_131313_clips.txt"
-
+#input_file="156D_11424_131313_clips.txt"
+# Buscar el archivo que termina en _clips.txt
+input_file=$(ls *_clips.txt 2>/dev/null | head -n 1)
 # Iterar sobre cada línea
 while read -r line; do
     clip_name=$(echo "$line" | awk '{print $1}')
