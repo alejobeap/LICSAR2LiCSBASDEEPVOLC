@@ -31,7 +31,7 @@ VOLC_NAME=$1
 #################
 ### Settings ####
 #################
-start_step="11"	# 01-05, 11-16
+start_step="03"	# 01-05, 11-16
 end_step="16"	# 01-05, 11-16  # 17 monitoring option
 
 cometdev='0' # shortcut to use COMET's experimental/dev functions. At this moment, '1' will turn on the nullification. Recommended: 0
